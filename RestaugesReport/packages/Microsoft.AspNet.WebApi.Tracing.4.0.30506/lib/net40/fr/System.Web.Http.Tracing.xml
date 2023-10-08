@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.Web.Http.Tracing</name>
+  </assembly>
+  <members>
+    <member name="T:System.Web.Http.HttpConfigurationTracingExtensions">
+      <summary> Cette classe static contient des méthodes d'assistance en rapport avec l'inscription des instances <see cref="T:System.Web.Http.Tracing.ITraceWriter" />. </summary>
+    </member>
+    <member name="M:System.Web.Http.HttpConfigurationTracingExtensions.EnableSystemDiagnosticsTracing(System.Web.Http.HttpConfiguration)">
+      <summary> Crée et inscrit une implémentation <see cref="T:System.Web.Http.Tracing.ITraceWriter" /> à utiliser pour cette application. </summary>
+      <returns>L'instance <see cref="T:System.Web.Http.Tracing.SystemDiagnosticsTraceWriter" /> qui a été créée et inscrite.</returns>
+      <param name="configuration">L'instance <see cref="T:System.Web.Http.HttpConfiguration" /> pour laquelle inscrire l'enregistreur de suivi créé.</param>
+    </member>
+    <member name="T:System.Web.Http.Tracing.SystemDiagnosticsTraceWriter">
+      <summary> Implémentation de <see cref="T:System.Web.Http.Tracing.ITraceWriter" /> qui assure le suivi pour <see cref="T:System.Diagnostics.Trace" /></summary>
+    </member>
+    <member name="M:System.Web.Http.Tracing.SystemDiagnosticsTraceWriter.#ctor">
+      <summary>Initialise une nouvelle instance de la classe <see cref="T:System.Web.Http.Tracing.SystemDiagnosticsTraceWriter" />.</summary>
+    </member>
+    <member name="M:System.Web.Http.Tracing.SystemDiagnosticsTraceWriter.Format(System.Web.Http.Tracing.TraceRecord)">
+      <summary> Formate le contenu de l'instance <see cref="T:System.Web.Http.Tracing.TraceRecord" /> en une chaîne unique contenant des paires valeur-nom séparées par une virgule pour chaque <see cref="T:System.Web.Http.Tracing.TraceRecord" /> property. </summary>
+      <returns>Chaîne contenant des paires valeur-nom séparées par une virgule.</returns>
+      <param name="traceRecord">Instance <see cref="T:System.Web.Http.Tracing.TraceRecord" /> à partir de laquelle produire le résultat.</param>
+    </member>
+    <member name="M:System.Web.Http.Tracing.SystemDiagnosticsTraceWriter.FormatDateTime(System.DateTime)">
+      <summary>
+        <see cref="T:System.DateTime" /> pour le suivi. </summary>
+      <returns>L'instance <see cref="T:System.DateTime" /> formatée comme chaîne</returns>
+      <param name="dateTime">
+        <see cref="T:System.DateTime" />
+      </param>
+    </member>
+    <member name="M:System.Web.Http.Tracing.SystemDiagnosticsTraceWriter.FormatRequestEnvelope(System.Web.Http.Tracing.TraceRecord)">
+      <summary> Formate l'instance <see cref="T:System.Web.Http.Tracing.TraceRecord" /> en une chaîne décrivant soit la réception initiale soit l'envoi final de la réponse, en fonction de <see cref="T:System.Web.Http.Tracing.TraceKind" />. </summary>
+      <returns>Chaîne contenant des paires valeur-nom séparées par une virgule.</returns>
+      <param name="traceRecord">Instance <see cref="T:System.Web.Http.Tracing.TraceRecord" /> à partir de laquelle produire le résultat.</param>
+    </member>
+    <member name="P:System.Web.Http.Tracing.SystemDiagnosticsTraceWriter.IsVerbose">
+      <summary> Obtient ou définit une valeur indiquant si le message formaté doit avoir un format détaillé, affichant ainsi tous les champs de <see cref="T:System.Web.Http.Tracing.TraceRecord" />. </summary>
+      <returns>true<see cref="T:System.Web.Http.Tracing.TraceRecord" />falsefalse</returns>
+    </member>
+    <member name="P:System.Web.Http.Tracing.SystemDiagnosticsTraceWriter.MinimumLevel">
+      <summary> Obtient ou définit le niveau de suivi minimum. </summary>
+      <returns>
+        <see cref="T:System.Web.Http.Tracing.TraceLevel" />
+        <see cref="F:System.Web.Http.Tracing.TraceLevel.Info" />
+      </returns>
+    </member>
+    <member name="M:System.Web.Http.Tracing.SystemDiagnosticsTraceWriter.Trace(System.Net.Http.HttpRequestMessage,System.String,System.Web.Http.Tracing.TraceLevel,System.Action{System.Web.Http.Tracing.TraceRecord})">
+      <summary> Enregistre un suivi vers <see cref="T:System.Diagnostics.Trace" /> si le niveau est supérieur ou égal au <see cref="P:System.Web.Http.Tracing.SystemDiagnosticsTraceWriter.MinimumLevel" />. </summary>
+      <param name="request">L'instance <see cref="T:System.Net.Http.HttpRequestMessage" /> associée à ce suivi.  Elle peut prendre la valeur Null mais le suivi résultant ne contiendra pas d'ID de corrélation.</param>
+      <param name="category">Catégorie du suivi. Il peut s'agir de toute valeur définie par l'utilisateur. Ceci n'est pas interprété par cette implémentation mais est enregistré dans le suivi.</param>
+      <param name="level">
+        <see cref="T:System.Web.Http.Tracing.TraceLevel" /> de ce suivi. Si la valeur est inférieure à <see cref="P:System.Web.Http.Tracing.SystemDiagnosticsTraceWriter.MinimumLevel" />, cette demande de suivi sera ignorée.</param>
+      <param name="traceAction">Le rappel utilisateur à invoquer pour remplir un <see cref="T:System.Web.Http.Tracing.TraceRecord" /> avec des informations supplémentaires à ajouter au suivi.</param>
+    </member>
+    <member name="P:System.Web.Http.Tracing.SystemDiagnosticsTraceWriter.TraceSource">
+      <summary> Obtient ou définit l'instance <see cref="P:System.Web.Http.Tracing.SystemDiagnosticsTraceWriter.TraceSource" /> à laquelle le suivi sera envoyé. </summary>
+      <returns>
+        <see cref="P:System.Web.Http.Tracing.SystemDiagnosticsTraceWriter.TraceSource" />
+        <see cref="P:System.Web.Http.Tracing.SystemDiagnosticsTraceWriter.TraceSource" />
+        <see cref="T:System.Diagnostics.Trace" />null<see cref="T:System.Diagnostics.Trace" /></returns>
+    </member>
+    <member name="M:System.Web.Http.Tracing.SystemDiagnosticsTraceWriter.TranslateHttpResponseException(System.Web.Http.Tracing.TraceRecord)">
+      <summary> Examine l'instance <see cref="T:System.Web.Http.Tracing.TraceRecord" /> afin de déterminer si elle contient un <see cref="T:System.Web.Http.HttpResponseException" /> et, le cas échéant, modifie le <see cref="T:System.Web.Http.Tracing.TraceRecord" /> pour capturer des informations plus détaillées. </summary>
+      <param name="traceRecord">L'instance <see cref="T:System.Web.Http.Tracing.TraceRecord" /> à examiner et à modifier.</param>
+    </member>
+  </members>
+</doc>

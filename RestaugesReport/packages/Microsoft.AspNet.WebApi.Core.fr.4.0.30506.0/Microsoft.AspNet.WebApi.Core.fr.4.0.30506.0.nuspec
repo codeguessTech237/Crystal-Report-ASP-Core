@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.AspNet.WebApi.Core.fr</id>
+    <version>4.0.30506.0</version>
+    <title>Ressources en français pour les Microsoft ASP.NET Web API Core Libraries</title>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <licenseUrl>http://www.microsoft.com/web/webpi/eula/MVC_4_eula_FRA.htm</licenseUrl>
+    <projectUrl>http://www.asp.net/web-api</projectUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Ce package inclut les assemblys satellites Français pour ASP.NET Web API Core Libraries.</description>
+    <summary>Ressources Français pour le package Microsoft.AspNet.WebApi.Core</summary>
+    <language>fr</language>
+    <tags>Microsoft AspNet WebApi AspNetWebApi</tags>
+    <dependencies>
+      <dependency id="Microsoft.AspNet.WebApi.Core" version="[4.0.30506.0]" />
+    </dependencies>
+  </metadata>
+</package>
